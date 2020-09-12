@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+video_toolkits/__init__.py
+video_toolkits/__version__.py
+video_toolkits/core.py
+video_toolkits.egg-info/PKG-INFO
+video_toolkits.egg-info/SOURCES.txt
+video_toolkits.egg-info/dependency_links.txt
+video_toolkits.egg-info/requires.txt
+video_toolkits.egg-info/top_level.txt

@@ -1,7 +1,7 @@
 from .easy_import import *
 
 
-def show(img):
+def display(img):
     '''
     Plot image with matplotlib, support 3-channel or 1-channel input
 
@@ -47,7 +47,7 @@ sklts_simbase_foot = [
 ]
 
 
-def visualize(img, kpts, color=None, sklts=None):
+def draw_sklts(img, kpts, color=None, sklts=None):
     '''
     Draw keypoints and skeletons on the given image
 
@@ -71,4 +71,17 @@ def visualize(img, kpts, color=None, sklts=None):
     return img
 
 
-__all__ = ["show", "visualize"]
+color_dict = {'r': (0, 0, 255), 'g': (0, 255, 0), 'b': (255, 0, 0), 'd': (0, 0, 0), 'y': (0, 255, 255)}
+
+def put_text(img, text, pos=(15, 35), color='y'):
+    img = img.copy()
+    if isinstance(color, str):
+        color = 'y' if color not in color_dict else color
+        color = color_dict[color]
+    else:
+        assert len(color) == 3, "color should be char or 3-tuple"
+    cv2.putText(img, text, pos, cv2.FONT_HERSHEY_SIMPLEX, 1.2, color, 2)
+    return img
+
+
+__all__ = ["display", "draw_sklts", "put_text"]

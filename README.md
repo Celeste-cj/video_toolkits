@@ -43,12 +43,15 @@ succeed = VideoWriter.imgseq2video(img_seqs, out_path, fps=30)
 ### Visualization
 
 ```python
-from video_toolkits import show, visualize
+from video_toolkits import display, draw_sklts, put_text
 
 img = None
 kpts = []                       # default (22, 4)
-show(img)                       # plot image with matplotlib.pyplot
-visualize(img, kpts, color=None, sklts=None)          # draw skeletons
+text = ""
+
+display(img)                       # plot image with matplotlib.pyplot
+draw_sklts(img, kpts, color=None, sklts=None)          # draw skeletons
+put_text(img, text)                                    # put text
 ```
 
 ### Easy Import  

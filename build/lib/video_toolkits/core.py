@@ -1,10 +1,35 @@
 import os
 import sys
 
+import av
 import cv2
 
 
 class VideoReader(object):
+    def __init__(self, file_name):
+        self.file_name = file_name
+        try:
+            self.file_name = int(file_name)
+        except ValueError:
+            pass
+
+    def __iter__(self):
+        try:
+            self.container = av.open(self.file_name)
+        except av.error.FileNotFoundError:
+            raise IOError('Video {} not found'.format(self.file_name))
+        return self
+
+    def __next__(self):
+        try:
+            img = next(self.container.decode(video=0))
+            frame = img.to_ndarray(format='bgr24')
+        except Exception as e:
+            raise StopIteration
+        return img
+
+
+class VideoReaderCV2(object):
     def __init__(self, file_name):
         self.file_name = file_name
         try:  # OpenCV needs int to read from webcam
@@ -51,4 +76,4 @@ class VideoWriter:
 
 
 
-__all__ = ['VideoReader', 'VideoWriter']
+__all__ = ['VideoReader', 'VideoReaderCV2', 'VideoWriter']

@@ -7,31 +7,18 @@ Author: Celeste-cj
 Author-email: jingc2015@pku.edu.cn
 License: MIT
 Description: 
-        📦 setup.py (for humans)
+        :movie_camera: video_toolkits
         =======================
         
-        This repo exists to provide [an example setup.py] file, that can be used
-        to bootstrap your next Python project. It includes some advanced
-        patterns and best practices for `setup.py`, as well as some
-        commented–out nice–to–haves.
+        This repo provides functions to read/write a video and draw keypoints.
         
-        For example, this `setup.py` provides a `$ python setup.py upload`
-        command, which creates a *universal wheel* (and *sdist*) and uploads
-        your package to [PyPi] using [Twine], without the need for an annoying
-        `setup.cfg` file. It also creates/uploads a new git tag, automatically.
-        
-        In short, `setup.py` files can be daunting to approach, when first
-        starting out — even Guido has been heard saying, "everyone cargo cults
-        thems". It's true — so, I want this repo to be the best place to
-        copy–paste from :)
-        
-        [Check out the example!][an example setup.py]
+        ** Defult BGR **
         
         Installation
         -----
         
         ```bash
-        git clone git@github.com:Celeste-cj/video_toolkits.git
+        git clone https://github.com/Celeste-cj/video_toolkits.git
         cd video_toolkits
         python setup.py install
         ```
@@ -42,11 +29,11 @@ Description:
         ### VideoReader  
         
         ```python
-        from video_toolkits import VideoReader
+        from video_toolkits import VideoReader, VideoReaderCV2
         
         video_path = 'path to video'
-        reader = VideoReader(video_path)            # video path
-        reader = VideoReader(0)            # webcam 0
+        reader = VideoReader(video_path)            # VideoReader - pyav, only support video file/stream
+        # reader = VideoReader(0)                   # webcam 0   VideoReaderCV2 support
         for img in reader:
             pass
         ```
@@ -62,14 +49,33 @@ Description:
         succeed = VideoWriter.imgseq2video(img_seqs, out_path, fps=30)
         ```
         
+        ### Visualization
+        
+        ```python
+        from video_toolkits import display, draw_sklts, put_text
+        
+        img = None
+        kpts = []                       # default (22, 4)
+        text = ""
+        
+        display(img)                       # plot image with matplotlib.pyplot
+        draw_sklts(img, kpts, color=None, sklts=None)          # draw skeletons
+        put_text(img, text)                                    # put text
+        ```
+        
+        ### Easy Import  
+        
+        ```python
+        from video_toolkits.easy_import import *       # this will import os, math, cv2, plt, numpy
+        ```
+        
+        
         License
         -------
         
         This is free and unencumbered software released into the public domain.
         
-        Anyone is free to copy, modify, publish, use, compile, sell, or
-        distribute this software, either in source code form or as a compiled
-        binary, for any purpose, commercial or non-commercial, and by any means.
+        Anyone is free to copy, use, compile this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
         
 Platform: UNKNOWN
 Classifier: License :: OSI Approved :: MIT License

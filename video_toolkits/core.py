@@ -26,7 +26,7 @@ class VideoReader(object):
             frame = img.to_ndarray(format='bgr24')
         except Exception as e:
             raise StopIteration
-        return img
+        return frame
 
 
 class VideoReaderCV2(object):

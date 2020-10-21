@@ -52,15 +52,17 @@ Description:
         ### Visualization
         
         ```python
-        from video_toolkits import display, draw_sklts, put_text
+        from video_toolkits import display, draw_sklts, put_text, draw_bbox
         
         img = None
         kpts = []                       # default (22, 4)
         text = ""
+        bbox = []
         
         display(img)                       # plot image with matplotlib.pyplot
-        draw_sklts(img, kpts, color=None, sklts=None)          # draw skeletons
-        put_text(img, text)                                    # put text
+        img = draw_sklts(img, kpts, color=None, sklts=None)          # draw skeletons
+        img = put_text(img, text)                                    # put text
+        img = draw_bbox(img, bbox)
         ```
         
         ### Easy Import  

@@ -44,7 +44,7 @@ succeed = VideoWriter.imgseq2video(img_seqs, out_path, fps=30)
 
 ```python
 from video_toolkits import display, draw_sklts, put_text, draw_bbox
-
+                                                                   
 img = None
 kpts = []                       # default (22, 4)
 text = ""

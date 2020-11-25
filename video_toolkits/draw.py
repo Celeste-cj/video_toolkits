@@ -106,7 +106,7 @@ def draw_bbox(img, bbox, color='y', inplace=False):
     img = img.copy() if not inplace else img
     x, y, w, h = np.array(bbox, dtype=np.int_)
     color = 'y' if color not in color_dict else color
-    img = cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
+    img = cv2.rectangle(img, (x, y), (x + w, y + h), color_dict[color], 2)
     return img
 
 

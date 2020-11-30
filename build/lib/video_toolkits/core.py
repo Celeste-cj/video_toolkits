@@ -94,7 +94,7 @@ def flv2mp4(vid_path, out_folder=''):
         imgs = [cv2.resize(img, shape) for img in imgs]
 
         out_path = os.path.join(out_folder, os.path.basename(vid_path)[:-3] + "mp4") if out_folder == '' else vid_path[:-3] + "mp4"
-        VideoWriter.imgseq2video(out_path, imgs)
+        VideoWriter.imgseq2video(imgs, out_path)
         return True
     except:
         return False

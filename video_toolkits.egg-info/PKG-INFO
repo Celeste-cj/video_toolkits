@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: video-toolkits
-Version: 0.1.0
+Version: 0.1.1
 Summary: Toolkits for read/write video
 Home-page: git@github.com:Celeste-cj/video_toolkits
 Author: Celeste-cj
@@ -39,7 +39,7 @@ Description:
         ```
         
         
-        ### VideoReader  
+        ### VideoWriter 
         
         ```python
         from video_toolkits import VideoWriter
@@ -47,6 +47,16 @@ Description:
         img_seqs = []
         out_path = '{VIDEO_NAME}.mp4'                     # currently support .mp4/.avi
         succeed = VideoWriter.imgseq2video(img_seqs, out_path, fps=30)
+        ```
+        
+        ### Convert flv to mp4
+        
+        ```python
+        from video_toolkits import flv2mp4
+        
+        input_vid = "{INPUT_FOLDER}/{VID_NAME}.flv"
+        output_folder = "{OUTPUT_FOLDER}"                 # if output_folder == '', will use {INPUT_FOLDER}
+        succeed = flv2mp4(input_vid, out_folder=output_folder) 
         ```
         
         ### Visualization

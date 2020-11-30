@@ -30,7 +30,7 @@ for img in reader:
 ```
 
 
-### VideoReader  
+### VideoWriter 
 
 ```python
 from video_toolkits import VideoWriter
@@ -38,6 +38,16 @@ from video_toolkits import VideoWriter
 img_seqs = []
 out_path = '{VIDEO_NAME}.mp4'                     # currently support .mp4/.avi
 succeed = VideoWriter.imgseq2video(img_seqs, out_path, fps=30)
+```
+
+### Convert flv to mp4
+
+```python
+from video_toolkits import flv2mp4
+
+input_vid = "{INPUT_FOLDER}/{VID_NAME}.flv"
+output_folder = "{OUTPUT_FOLDER}"                 # if output_folder == '', will use {INPUT_FOLDER}
+succeed = flv2mp4(input_vid, out_folder=output_folder) 
 ```
 
 ### Visualization

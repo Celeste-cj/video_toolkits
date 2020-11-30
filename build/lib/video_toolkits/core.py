@@ -76,4 +76,28 @@ class VideoWriter:
 
 
 
-__all__ = ['VideoReader', 'VideoReaderCV2', 'VideoWriter']
+def flv2mp4(vid_path, out_folder=''):
+    '''
+    convert flv format video to mp4
+
+    :param vid_path: path to input video in flv format
+    :param out_folder: output folder
+    :return: True - succeed; False - failed
+    '''
+    try:
+        reader = VideoReaderCV2(vid_path)
+        imgs = []
+        shape = (1080, 960)
+        for img in reader:
+            imgs.append(img)
+            shape = img.shape[:2] if img.shape[0] * img.shape[1] < shape[0] * shape[1] else shape
+        imgs = [cv2.resize(img, shape) for img in imgs]
+
+        out_path = os.path.join(out_folder, os.path.basename(vid_path)[:-3] + "mp4") if out_folder == '' else vid_path[:-3] + "mp4"
+        VideoWriter.imgseq2video(out_path, imgs)
+        return True
+    except:
+        return False
+
+
+__all__ = ['VideoReader', 'VideoReaderCV2', 'VideoWriter', 'flv2mp4']

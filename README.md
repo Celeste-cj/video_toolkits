@@ -66,12 +66,22 @@ img = put_text(img, text)                                    # put text
 img = draw_bbox(img, bbox)
 ```
 
-### Easy Import  
+### FFmpeg  
 
 ```python
-from video_toolkits.easy_import import *       # this will import os, math, cv2, plt, numpy
-```
+from video_toolkits import trim_video, push_rtmp
 
+input_video_path = ""
+output_video_path = ""
+
+start_at = 60             # trim video start at 60 second
+duration = 60             # or end_at = 120
+                          # if both end_at and duration is not given, will trim the video till the end
+trim_video(input_video_path, output_video_path, duration=duration)
+
+rtmp_play_url = "rtmp://{host}/live/{stream_name}"
+push_rtmp(input_video_path, rtmp_play_url, loop=False)
+```
 
 License
 -------

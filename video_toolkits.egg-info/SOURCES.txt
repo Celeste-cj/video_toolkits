@@ -7,7 +7,7 @@ video_toolkits/__init__.py
 video_toolkits/__version__.py
 video_toolkits/core.py
 video_toolkits/draw.py
-video_toolkits/easy_import.py
+video_toolkits/easy_ffmpeg.py
 video_toolkits.egg-info/PKG-INFO
 video_toolkits.egg-info/SOURCES.txt
 video_toolkits.egg-info/dependency_links.txt
